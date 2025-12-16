@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 type EventCardProps = {
   title: string;
   by: string;
@@ -51,6 +53,27 @@ function EventCard({
 }
 
 export default function Events() {
+  const [starRotation, setStarRotation] = useState(0);
+  const [sparkRotation, setSparkRotation] = useState(0);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - lastScrollY;
+
+      // Rotate based on scroll direction
+      // Positive delta (scrolling down) = clockwise rotation
+      // Negative delta (scrolling up) = counter-clockwise rotation
+      setStarRotation((prev) => prev + scrollDelta * 0.5);
+      setSparkRotation((prev) => prev + scrollDelta * 0.5);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const events = [
     {
       title: "Music Production",
@@ -131,13 +154,16 @@ export default function Events() {
   const character3 = "/characters/03.png";
   const character4 = "/characters/04.png";
   const sparkSvg = "/events/spark.svg";
-  const starSvg = "/star.svg";
+  const starSvg = "/events/star.svg";
 
   return (
     <div className="bg-[#f9d457] flex flex-col gap-5 items-center pb-16 sm:pb-[83px] pt-16 sm:pt-[122px] px-4 sm:px-0 relative w-full min-h-screen h-[110vh] overflow-hidden">
       {/* Spark SVG - Bottom Left */}
       <div className="absolute hidden lg:flex items-center justify-center -left-[500px] -bottom-[40%] z-0">
-        <div className="flex-none">
+        <div
+          className="flex-none transition-transform duration-75 ease-out"
+          style={{ transform: `rotate(${sparkRotation}deg)` }}
+        >
           <div className="h-[958px] relative w-[914px]">
             <img alt="" className="block max-w-none size-full" src={sparkSvg} />
           </div>
@@ -145,9 +171,12 @@ export default function Events() {
       </div>
 
       {/* Star SVG - Top Right */}
-      <div className="absolute hidden lg:flex items-center justify-center right-0 top-0 z-0">
-        <div className="flex-none">
-          <div className="h-[26px] relative w-[26px]">
+      <div className="absolute hidden lg:flex items-center justify-center -right-[12%] -top-[20%] z-0">
+        <div
+          className="flex-none transition-transform duration-75 ease-out"
+          style={{ transform: `rotate(${starRotation}deg)` }}
+        >
+          <div className="relative ">
             <img alt="" className="block max-w-none size-full" src={starSvg} />
           </div>
         </div>

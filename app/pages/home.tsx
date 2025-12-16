@@ -1,6 +1,10 @@
 import Hero from "../components/hero";
 import About from "../components/about";
 import Events from "../components/events";
+import Quote from "../components/quote";
+import Schedule from "../components/schedule";
+import Tickets from "../components/tickets";
+import Footer from "../components/footer";
 
 export default function HomePage() {
   return (
@@ -8,6 +12,10 @@ export default function HomePage() {
       <Hero />
       <About />
       <Events />
+      <Quote />
+      <Schedule />
+      <Tickets />
+      <Footer />
     </>
   );
 }
