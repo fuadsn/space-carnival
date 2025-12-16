@@ -5,57 +5,99 @@ const scheduleFrame = "/characters/06.png";
 type ScheduleItem = {
   time: string;
   title: string;
-  location: string;
+  details?: string;
+  location?: string;
 };
 
-const scheduleData: ScheduleItem[] = [
-  {
-    time: "9:00 AM",
-    title: "Registration & Welcome Coffee",
-    location: "Main Lobby",
-  },
+const scheduleDec20: ScheduleItem[] = [
   {
     time: "10:00 AM",
-    title: "Opening Ceremony",
-    location: "Main Stage",
+    title: "Opening Session",
+    details:
+      '"Oridathoridath... Why we still need stories?" (Storytelling Workshop)',
   },
   {
     time: "11:00 AM",
-    title: "Morning Workshop Sessions",
-    location: "Workshop Halls",
+    title: "Creative Workshops Block A",
+    details:
+      "• Blueprint Magic (Cyanotype)\n• The Salad Studio\n• Zine Making Workshop\n• Resin Art Workshop",
   },
   {
-    time: "1:00 PM",
-    title: "Lunch Break & Networking",
-    location: "Cafeteria",
+    time: "12:00 PM",
+    title: "Tech Session",
+    details: "Sonic Pi Workshop (Live Coding Music)",
   },
   {
-    time: "2:00 PM",
-    title: "Afternoon Workshop Sessions",
-    location: "Workshop Halls",
+    time: "01:00 PM",
+    title: "Break & Exploration",
+    details: "Experience Stations, Stalls, Retro Zone, & Skateboarding Area",
   },
   {
-    time: "4:00 PM",
-    title: "Experience Stations Tour",
-    location: "Exhibition Area",
+    time: "03:00 PM",
+    title: "Studio & Craft Sessions",
+    details:
+      '• Intro to Music Production (Studio Sessions)\n• Crochet Workshop\n• Panel Discussion: "Why do we need third spaces?"',
   },
   {
-    time: "6:00 PM",
-    title: "Live Music Performance",
-    location: "Main Stage",
+    time: "04:00 PM",
+    title: "Interactive Gaming",
+    details: "Murder Mystery: Blood on the Clock Tower (Social Deduction Game)",
   },
   {
-    time: "7:30 PM",
-    title: "Day 1 Closing & Dinner",
-    location: "Outdoor Area",
+    time: "05:00 PM",
+    title: "Making & Pitching",
+    details: "• Telescope Making Workshop\n• Project Exhibition & Pitching",
+  },
+  {
+    time: "06:00 PM",
+    title: "Culturals & Main Event",
+    details:
+      "Culmination of AI Wednesday & Maker Thursday\nThe TinkerSpace Story",
+  },
+];
+
+const scheduleDec21: ScheduleItem[] = [
+  {
+    time: "07:00 AM",
+    title: "Morning Fitness",
+    details: "Zumba Session",
+  },
+  {
+    time: "10:00 AM",
+    title: "Morning Keynote",
+    details: "Bavarasa Session",
+  },
+  {
+    time: "11:00 AM",
+    title: "Art & Performance",
+    details: "• Water Colour Roses + Brush Pen Calligraphy\n• Theatre Workshop",
+  },
+  {
+    time: "01:00 PM",
+    title: "Skills & Sustainability",
+    details:
+      "• Touch Designer Workshop\n• Money Matters (Finance Talk)\n• Grow Your Own Microgreens",
+  },
+  {
+    time: "02:00 PM",
+    title: "Crafting Hour",
+    details: "• Doll Making Workshop\n• Fold & Create (Origami Workshop)",
+  },
+  {
+    time: "04:00 PM",
+    title: "Closing Ceremony",
+    details: "Useless Project Showcase & Graduation",
   },
 ];
 
 export default function Schedule() {
   const [selectedDate, setSelectedDate] = useState("Dec 20");
 
+  const scheduleData =
+    selectedDate === "Dec 20" ? scheduleDec20 : scheduleDec21;
+
   return (
-    <div className="bg-[#ff0000] flex items-center justify-between px-4 sm:px-[186px] py-[22px] relative w-full min-h-screen overflow-hidden">
+    <div className="bg-[#ff0000] flex items-center justify-between px-4 sm:px-[186px] py-[22px] relative w-full overflow-hidden">
       {/* Radial Starburst Background */}
       <div className="absolute inset-0 w-full h-full z-0">
         <div
@@ -91,7 +133,7 @@ export default function Schedule() {
             className={`bg-white border-[#4d93ff] border-[1.369px] border-solid flex items-start overflow-clip p-[4.565px] relative shadow-[-1.826px_1.826px_0px_0px_#000000] w-[152.455px] transition-all ${
               selectedDate === "Dec 20"
                 ? "border-[#0040ff] border-2 scale-105"
-                : "hover:opacity-90"
+                : ""
             }`}
           >
             <p className="font-poppins text-[20px] sm:text-[27.387px] text-black text-center tracking-[-2.191px] w-full">
@@ -103,7 +145,7 @@ export default function Schedule() {
             className={`bg-white border-[#4d93ff] border-[1.369px] border-solid flex items-start overflow-clip p-[4.565px] relative shadow-[-1.826px_1.826px_0px_0px_#000000] w-[152.455px] transition-all ${
               selectedDate === "Dec 21"
                 ? "border-[#0040ff] border-2 scale-105"
-                : "hover:opacity-90"
+                : ""
             }`}
           >
             <p className="font-poppins text-[20px] sm:text-[27.387px] text-black text-center tracking-[-2.191px] w-full">
@@ -115,7 +157,7 @@ export default function Schedule() {
         {/* Schedule Container */}
         <div className="flex h-auto items-center justify-center relative shrink-0 w-full max-w-[828px]">
           <div className="flex-none rotate-359 w-full">
-            <div className="bg-white border-4 border-[#9f76ff] border-solid flex flex-col h-auto min-h-[902px] items-center justify-center pb-[4px] pt-[36px] px-4 sm:px-[36px] relative shadow-[-4px_4px_0px_-5px_#000000] w-full">
+            <div className="bg-white border-4 border-[#9f76ff] border-solid flex flex-col h-auto items-center justify-center pb-[4px] pt-[36px] px-4 sm:px-[36px] relative shadow-[-4px_4px_0px_-5px_#000000] w-full">
               {/* Character Image */}
               <div className="absolute hidden lg:flex h-[195.882px] items-center justify-center left-[711.22px] top-[94.91px] w-[147.642px] z-9999">
                 <div className="flex-none rotate-11">
@@ -146,9 +188,13 @@ export default function Schedule() {
                     <p className="font-poppins text-[24px] sm:text-[32px] text-black tracking-[-1.8px]">
                       {item.title}
                     </p>
-                    <p className="font-instrument-serif italic text-[16px] sm:text-[20px] text-[#4a5565]">
-                      {item.location}
-                    </p>
+                    {item.details && (
+                      <p className="font-poppins font-light italic text-[14px] sm:text-[18px] text-[#4a5565] whitespace-pre-line">
+                        {item.details.startsWith("•")
+                          ? item.details
+                          : `• ${item.details}`}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
