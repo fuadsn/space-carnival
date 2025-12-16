@@ -182,7 +182,7 @@ export default function Events() {
         </div>
       </div>
       <div className="absolute hidden lg:flex items-center justify-center left-[34vw] top-[15vw] translate-x-[-50%] translate-y-[-50%] rotate-16 z-9999">
-        <div className="flex-none rotate-[342deg]">
+        <div className="flex-none rotate-342">
           <div className="h-[170.01px] overflow-clip relative w-[203.75px]">
             <img alt="" className="absolute" src={character1} />
           </div>
@@ -204,7 +204,7 @@ export default function Events() {
 
       {/* Character 3 - Top */}
       <div className="absolute hidden lg:flex items-center justify-center -bottom-[2%] z-9999">
-        <div className="flex-none rotate-[6deg]">
+        <div className="flex-none rotate-6">
           <div className="h-[186.54px] overflow-clip relative w-[144.64px]">
             <img
               alt=""
@@ -217,7 +217,7 @@ export default function Events() {
 
       {/* Character 4 - Top Right (Spark) */}
       <div className="absolute hidden lg:flex items-center justify-center right-[19%] bottom-[20%] z-9999">
-        <div className="flex-none rotate-[354deg]">
+        <div className="flex-none rotate-354">
           <div className="h-[178.35px] relative w-[157.4px]">
             <img
               alt=""
@@ -230,7 +230,7 @@ export default function Events() {
 
       {/* Events Title */}
       <div className="flex h-[101.914px] items-center justify-center relative shrink-0 w-[234.395px] mb-4 z-10">
-        <div className="flex-none rotate-[3deg]">
+        <div className="flex-none rotate-3">
           <div className="bg-white border-2 border-[#0d00ff] border-solid flex items-center justify-center relative shadow-[-4px_4px_0px_0px_#000000] w-[230px]">
             <div className="bg-white border-2 border-[red] border-solid flex items-center justify-center relative shadow-[-4px_4px_0px_0px_#000000] shrink-0 w-[230px]">
               <p className="[text-shadow:rgba(0,0,0,0.25)_0px_4px_4px] font-poppins text-[40px] sm:text-[60px] text-black text-center tracking-[-4.8px]">

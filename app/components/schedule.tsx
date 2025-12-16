@@ -75,7 +75,7 @@ export default function Schedule() {
       <div className="basis-0 flex flex-col gap-[9px] grow items-center justify-center min-h-px min-w-px relative shrink-0 z-10">
         {/* Schedule Title */}
         <div className="flex h-[99.368px] items-center justify-center relative shrink-0 w-[272.976px]">
-          <div className="flex-none rotate-[2deg]">
+          <div className="flex-none rotate-2">
             <div className="bg-white border-2 border-[#0040ff] border-solid flex items-center justify-center relative shadow-[-4px_4px_0px_0px_#000000] w-[270px]">
               <p className="[text-shadow:rgba(0,0,0,0.25)_0px_4px_4px] font-poppins text-[40px] sm:text-[60px] text-black text-center tracking-[-4.8px]">
                 Schedule
@@ -114,11 +114,11 @@ export default function Schedule() {
 
         {/* Schedule Container */}
         <div className="flex h-auto items-center justify-center relative shrink-0 w-full max-w-[828px]">
-          <div className="flex-none rotate-[359deg] w-full">
+          <div className="flex-none rotate-359 w-full">
             <div className="bg-white border-4 border-[#9f76ff] border-solid flex flex-col h-auto min-h-[902px] items-center justify-center pb-[4px] pt-[36px] px-4 sm:px-[36px] relative shadow-[-4px_4px_0px_-5px_#000000] w-full">
               {/* Character Image */}
               <div className="absolute hidden lg:flex h-[195.882px] items-center justify-center left-[711.22px] top-[94.91px] w-[147.642px] z-9999">
-                <div className="flex-none rotate-[11deg]">
+                <div className="flex-none rotate-11">
                   <div className="h-[177px] overflow-clip relative w-[116px]">
                     <img
                       alt=""

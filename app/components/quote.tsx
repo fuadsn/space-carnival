@@ -24,7 +24,7 @@ export default function Quote() {
 
       {/* Purple Flower Shape */}
       <div className="absolute hidden lg:flex items-center justify-center left-[calc(50%-191px)] size-[310.175px] top-[calc(50%+0.5px)] translate-x-[-50%] translate-y-[-50%] z-10">
-        <div className="flex-none rotate-[20deg]">
+        <div className="flex-none rotate-20">
           <div className="relative size-[242px]">
             <img alt="" className="block max-w-none size-full" src={starSvg} />
           </div>
@@ -32,7 +32,7 @@ export default function Quote() {
       </div>
 
       {/* Quote Text */}
-      <div className="font-poppins leading-[0] not-italic relative text-[32px] text-center tracking-[-2.6873px] w-full z-20">
+      <div className="font-poppins leading-0 not-italic relative text-[32px] text-center tracking-[-2.6873px] w-full z-20">
         <p className="font-poppins italic font-extralight leading-[1.1] mb-0 text-black tracking-[-1.28px]">
           "echoes of years,{" "}
         </p>
