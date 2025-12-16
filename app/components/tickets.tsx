@@ -4,8 +4,12 @@ const sparkSvg = "/events/spark.svg";
 
 function TicketCard() {
   return (
-    <div className="bg-[rgba(255,255,255,0)] overflow-clip relative w-full h-[260px] ">
-      <img src="/ticket.png" alt="Ticket" className="w-full h-full object-cover" />
+    <div className="bg-[rgba(255,255,255,0)] overflow-clip relative w-full sm:h-[260px] h-[200px]">
+      <img
+        src="/ticket.png"
+        alt="Ticket"
+        className="w-full h-full object-cover"
+      />
     </div>
   );
 }
@@ -14,7 +18,7 @@ export default function Tickets() {
   return (
     <div className="bg-[#8082ff] flex flex-col gap-[10px] items-center justify-center px-4 sm:px-[408px] py-16 sm:py-[242px] relative w-full h-[563px] overflow-visible">
       {/* Marquee */}
-      <div className="absolute -top-[20%] left-0 z-10">
+      <div className="absolute -top-[2%] left-0 z-10 inset-x-0 z-10">
         <Marquee />
       </div>
 

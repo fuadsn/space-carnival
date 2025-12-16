@@ -11,37 +11,42 @@ type ScheduleItem = {
 
 const scheduleDec20: ScheduleItem[] = [
   {
+    time: "09:00 AM",
+    title: "Registration & Welcome Coffee",
+    details: "Main Lobby",
+  },
+  {
     time: "10:00 AM",
-    title: "Opening Session",
-    details:
-      '"Oridathoridath... Why we still need stories?" (Storytelling Workshop)',
+    title: "Opening Session: Storytelling",
+    details: '"Oridathoridath... Why we still need stories?" by Kalyani',
   },
   {
     time: "11:00 AM",
-    title: "Creative Workshops Block A",
+    title: "Creative Workshop Track A",
     details:
-      "• Blueprint Magic (Cyanotype)\n• The Salad Studio\n• Zine Making Workshop\n• Resin Art Workshop",
+      "• Blueprint Magic: A Cyanotype Workshop (Kadeeja)\n• The Salad Studio (Arunima)\n• Zine Making Workshop (Community 40)\n• Resin Art Workshop",
   },
   {
     time: "12:00 PM",
-    title: "Tech Session",
-    details: "Sonic Pi Workshop (Live Coding Music)",
+    title: "Tech Session: Sonic Pi",
+    details: "Live Coding Music (Niyaska) - *Laptop Required*",
   },
   {
     time: "01:00 PM",
-    title: "Break & Exploration",
-    details: "Experience Stations, Stalls, Retro Zone, & Skateboarding Area",
+    title: "Lunch Break & Exploration",
+    details: "Experience Stations, Retro Zone, & Skateboarding Area",
   },
   {
     time: "03:00 PM",
     title: "Studio & Craft Sessions",
     details:
-      '• Intro to Music Production (Studio Sessions)\n• Crochet Workshop\n• Panel Discussion: "Why do we need third spaces?"',
+      '• Intro to Music Production (Suraj)\n• Crochet Workshop (Steffi Lazar)\n• Panel: "Why do we need third spaces?"',
   },
   {
     time: "04:00 PM",
     title: "Interactive Gaming",
-    details: "Murder Mystery: Blood on the Clock Tower (Social Deduction Game)",
+    details:
+      "Murder Mystery: Blood on the Clock Tower\n(A Social Deduction Experience)",
   },
   {
     time: "05:00 PM",
@@ -52,7 +57,27 @@ const scheduleDec20: ScheduleItem[] = [
     time: "06:00 PM",
     title: "Culturals & Main Event",
     details:
-      "Culmination of AI Wednesday & Maker Thursday\nThe TinkerSpace Story",
+      "• Culmination of AI Wednesday & Maker Thursday\n• The TinkerSpace Story",
+  },
+];
+
+const scheduleNightShift: ScheduleItem[] = [
+  {
+    time: "10:00 PM",
+    title: "Late Night Makers",
+    details:
+      "• Understanding 3D Printing & Digital Manufacturing\n• Design Literacy using AI (Nandana)\n• Building a Hardware Project (Shan, Rio, Ryyan)",
+  },
+  {
+    time: "10:00 PM",
+    title: "Socials & Gaming",
+    details:
+      "• VR Duel Competition: Shoot & Scoot (Abdul Samad)\n• Grill Night: Food & Networking",
+  },
+  {
+    time: "01:00 AM",
+    title: "Chill Zone",
+    details: "Late Night Watch Party",
   },
 ];
 
@@ -60,28 +85,30 @@ const scheduleDec21: ScheduleItem[] = [
   {
     time: "07:00 AM",
     title: "Morning Fitness",
-    details: "Zumba Session",
+    details: "Zumba Session (Abin Mary)",
   },
   {
     time: "10:00 AM",
     title: "Morning Keynote",
-    details: "Bavarasa Session",
+    details: "Bavarasa (Nandana A S)",
   },
   {
     time: "11:00 AM",
     title: "Art & Performance",
-    details: "• Water Colour Roses + Brush Pen Calligraphy\n• Theatre Workshop",
+    details:
+      "• Water Colour Roses + Brush Pen Calligraphy (Fathima)\n• Theatre Workshop",
   },
   {
     time: "01:00 PM",
     title: "Skills & Sustainability",
     details:
-      "• Touch Designer Workshop\n• Money Matters (Finance Talk)\n• Grow Your Own Microgreens",
+      "• Touch Designer Workshop (Rishi)\n• Money Matters (Muhsin)\n• Grow Your Own Microgreens (ZoeOrganics)",
   },
   {
     time: "02:00 PM",
     title: "Crafting Hour",
-    details: "• Doll Making Workshop\n• Fold & Create (Origami Workshop)",
+    details:
+      "• Doll Making Workshop\n• Fold & Create: Origami Workshop (Shyam Prasad)",
   },
   {
     time: "04:00 PM",
@@ -94,7 +121,11 @@ export default function Schedule() {
   const [selectedDate, setSelectedDate] = useState("Dec 20");
 
   const scheduleData =
-    selectedDate === "Dec 20" ? scheduleDec20 : scheduleDec21;
+    selectedDate === "Dec 20"
+      ? scheduleDec20
+      : selectedDate === "Night Shift"
+        ? scheduleNightShift
+        : scheduleDec21;
 
   return (
     <div className="bg-[#ff0000] flex items-center justify-between px-4 sm:px-[186px] py-[22px] relative w-full overflow-hidden">
@@ -114,7 +145,7 @@ export default function Schedule() {
       </div>
 
       {/* Main Content */}
-      <div className="basis-0 flex flex-col gap-[9px] grow items-center justify-center min-h-px min-w-px relative shrink-0 z-10">
+      <div className="basis-0 flex flex-col gap-[9px] grow items-center justify-center min-h-px min-w-px relative shrink-0 z-10 w-full overflow-hidden">
         {/* Schedule Title */}
         <div className="flex h-[99.368px] items-center justify-center relative shrink-0 w-[272.976px]">
           <div className="flex-none rotate-2">
@@ -127,7 +158,7 @@ export default function Schedule() {
         </div>
 
         {/* Date Buttons */}
-        <div className="flex gap-[10px] items-center justify-center px-0 py-[10px] relative shrink-0">
+        <div className="flex gap-[10px] items-center justify-center px-0 py-[10px] relative shrink-0 flex-wrap">
           <button
             onClick={() => setSelectedDate("Dec 20")}
             className={`bg-white border-[#4d93ff] border-[1.369px] border-solid flex items-start overflow-clip p-[4.565px] relative shadow-[-1.826px_1.826px_0px_0px_#000000] w-[152.455px] transition-all ${
@@ -138,6 +169,18 @@ export default function Schedule() {
           >
             <p className="font-poppins text-[20px] sm:text-[27.387px] text-black text-center tracking-[-2.191px] w-full">
               Dec 20
+            </p>
+          </button>
+          <button
+            onClick={() => setSelectedDate("Night Shift")}
+            className={`bg-white border-[#4d93ff] border-[1.369px] border-solid flex items-start overflow-clip p-[4.565px] relative shadow-[-1.826px_1.826px_0px_0px_#000000] w-[152.455px] transition-all ${
+              selectedDate === "Night Shift"
+                ? "border-[#0040ff] border-2 scale-105"
+                : ""
+            }`}
+          >
+            <p className="font-poppins text-[18px] sm:text-[24px] text-black text-center tracking-[-2.191px] w-full">
+              Night Shift
             </p>
           </button>
           <button
@@ -155,11 +198,11 @@ export default function Schedule() {
         </div>
 
         {/* Schedule Container */}
-        <div className="flex h-auto items-center justify-center relative shrink-0 w-full max-w-[828px]">
+        <div className="flex h-auto items-center justify-center relative shrink-0 w-full max-w-[828px] overflow-hidden">
           <div className="flex-none rotate-359 w-full">
-            <div className="bg-white border-4 border-[#9f76ff] border-solid flex flex-col h-auto items-center justify-center pb-[4px] pt-[36px] px-4 sm:px-[36px] relative shadow-[-4px_4px_0px_-5px_#000000] w-full">
+            <div className="bg-white border-4 border-[#9f76ff] border-solid flex flex-col h-auto items-center justify-center pb-[4px] pt-[36px] px-4 sm:px-[36px] relative shadow-[-4px_4px_0px_-5px_#000000] w-full overflow-hidden">
               {/* Character Image */}
-              <div className="absolute hidden lg:flex h-[195.882px] items-center justify-center left-[711.22px] top-[94.91px] w-[147.642px] z-9999">
+              <div className="absolute hidden lg:flex h-[195.882px] items-center justify-center right-0 top-[94.91px] w-[147.642px] z-9999">
                 <div className="flex-none rotate-11">
                   <div className="h-[177px] overflow-clip relative w-[116px]">
                     <img

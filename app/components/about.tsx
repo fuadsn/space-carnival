@@ -2,7 +2,7 @@ const cloud = "/cloud.svg";
 
 export default function About() {
   return (
-    <div className="bg-white flex flex-col gap-[19px] items-center justify-center px-4 sm:px-[79px] py-16 sm:py-[116px] relative w-full h-screen">
+    <div className="bg-white flex flex-col gap-[19px] items-center justify-center px-4 sm:px-[79px] py-16 sm:py-[116px] relative w-full h-screen overflow-hidden">
       {/* Decorative cloud - top left */}
       <div className="absolute flex h-[144px] items-center justify-center left-[calc(50%-501.15px)] top-[calc(50%-229.9px)] translate-x-[-50%] translate-y-[-50%] w-[126.945px] lg:flex">
         <div className="flex-none rotate-324">
@@ -34,7 +34,7 @@ export default function About() {
         journey in fostering creativity, innovation, and community. Join us for
         two days of hands-on workshops, interactive sessions, creative
         showcases, and community bonding. Whether you're an artist, maker,
-        thinker, or simply curious — there's something for everyone!
+        thinker, or simply curious, there's something for everyone!
       </p>
     </div>
   );
