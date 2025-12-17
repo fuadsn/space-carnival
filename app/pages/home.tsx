@@ -3,7 +3,7 @@ import About from "../components/about";
 import Events from "../components/events";
 import Quote from "../components/quote";
 import Schedule from "../components/schedule";
-import Tickets from "../components/tickets";
+import LocationMaps from "../components/location-maps";
 import Footer from "../components/footer";
 
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
       <Events />
       <Quote />
       <Schedule />
-      <Tickets />
+      <LocationMaps />
       <Footer />
     </>
   );

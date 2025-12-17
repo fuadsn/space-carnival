@@ -7,6 +7,7 @@ type EventCardProps = {
   time: string;
   category: string;
   rotation?: string;
+  link?: string;
 };
 
 function EventCard({
@@ -16,6 +17,7 @@ function EventCard({
   time,
   category,
   rotation = "rotate-0",
+  link,
 }: EventCardProps) {
   const [isMobile, setIsMobile] = useState(true);
 
@@ -46,38 +48,78 @@ function EventCard({
           transition: "transform 0.3s ease-out",
         }}
       >
-        <button className="bg-white block border-[#4d93ff] border-[1.443px] border-solid cursor-pointer h-[130.789px] overflow-clip relative shadow-[-1.923px_1.923px_0px_0px_#000000] w-[177.911px] hover:shadow-[-2.5px_2.5px_0px_0px_#000000] transition-all duration-300">
-          <div className="relative p-3 h-full flex flex-col">
-            <p className="font-poppins sm:text-[15.39px] text-[14px] text-black tracking-[-1.2312px] mb-1">
-              {title}
-            </p>
-            {by && (
-              <p className="font-instrument-serif italic sm:text-[12.02px] text-[14px] text-black mb-auto">
-                by {by}
+        {link ? (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white block border-[#4d93ff] border-[1.443px] border-solid cursor-pointer h-[130.789px] overflow-clip relative shadow-[-1.923px_1.923px_0px_0px_#000000] w-[177.911px] hover:shadow-[-2.5px_2.5px_0px_0px_#000000] transition-all duration-300 no-underline"
+          >
+            <div className="relative p-3 h-full flex flex-col">
+              <p className="font-poppins sm:text-[15.39px] text-[14px] text-black tracking-[-1.2312px] mb-1">
+                {title}
               </p>
-            )}
-            {!by && <div className="mb-auto" />}
-            <div className="flex justify-between items-end mt-auto">
-              <p className="font-poppins sm:text-[10.39px] text-[12px] text-black tracking-[-0.8312px]">
-                {category}
-              </p>
-              <div className="font-poppins sm:text-[7.44px] text-[9px] text-black text-right tracking-[-0.5952px]">
-                <p className="leading-normal mb-0">
-                  <span className="font-instrument-serif italic sm:text-[7.44px] text-[12px]">
-                    date
-                  </span>
-                  <span className="sm:text-[7.44px] text-[8px]">{` : ${date}`}</span>
+              {by && (
+                <p className="font-instrument-serif italic sm:text-[12.02px] text-[14px] text-black mb-auto">
+                  by {by}
                 </p>
-                <p className="leading-normal">
-                  <span className="font-instrument-serif italic sm:text-[7.44px] text-[12px]">
-                    time
-                  </span>
-                  <span className="sm:text-[7.44px] text-[8px]">{` : ${time}`}</span>
+              )}
+              {!by && <div className="mb-auto" />}
+              <div className="flex justify-between items-end mt-auto">
+                <p className="font-poppins sm:text-[10.39px] text-[12px] text-black tracking-[-0.8312px]">
+                  {category}
                 </p>
+                <div className="font-poppins sm:text-[7.44px] text-[9px] text-black text-right tracking-[-0.5952px]">
+                  <p className="leading-normal mb-0">
+                    <span className="font-instrument-serif italic sm:text-[7.44px] text-[12px]">
+                      date
+                    </span>
+                    <span className="sm:text-[7.44px] text-[8px]">{` : ${date}`}</span>
+                  </p>
+                  <p className="leading-normal">
+                    <span className="font-instrument-serif italic sm:text-[7.44px] text-[12px]">
+                      time
+                    </span>
+                    <span className="sm:text-[7.44px] text-[8px]">{` : ${time}`}</span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </button>
+          </a>
+        ) : (
+          <button className="bg-white block border-[#4d93ff] border-[1.443px] border-solid cursor-pointer h-[130.789px] overflow-clip relative shadow-[-1.923px_1.923px_0px_0px_#000000] w-[177.911px] hover:shadow-[-2.5px_2.5px_0px_0px_#000000] transition-all duration-300">
+            <div className="relative p-3 h-full flex flex-col">
+              <p className="font-poppins sm:text-[15.39px] text-[14px] text-black tracking-[-1.2312px] mb-1">
+                {title}
+              </p>
+              {by && (
+                <p className="font-instrument-serif italic sm:text-[12.02px] text-[14px] text-black mb-auto">
+                  by {by}
+                </p>
+              )}
+              {!by && <div className="mb-auto" />}
+              <div className="flex justify-between items-end mt-auto">
+                <p className="font-poppins sm:text-[10.39px] text-[12px] text-black tracking-[-0.8312px]">
+                  {category}
+                </p>
+                <div className="font-poppins sm:text-[7.44px] text-[9px] text-black text-right tracking-[-0.5952px]">
+                  <p className="leading-normal mb-0">
+                    <span className="font-instrument-serif italic sm:text-[7.44px] text-[12px]">
+                      date
+                    </span>
+                    <span className="sm:text-[7.44px] text-[8px]">{` : ${date}`}</span>
+                  </p>
+                  <p className="leading-normal">
+                    <span className="font-instrument-serif italic sm:text-[7.44px] text-[12px]">
+                      time
+                    </span>
+                    <span className="sm:text-[7.44px] text-[8px]">{` : ${time}`}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </button>
+        )}
       </div>
     </div>
   );
@@ -114,6 +156,7 @@ export default function Events() {
       time: "10:00am - 11:00am",
       category: "storytelling",
       rotation: "rotate-[2deg]",
+      link: "https://tinkerhub.org/events/T0UF5MLMP9/oridathoridath….why-we-still-need-stories???",
     },
     {
       title: "Blueprint Magic: A Cyanotype Workshop",
@@ -122,6 +165,7 @@ export default function Events() {
       time: "11:00am - 12:00pm",
       category: "workshop",
       rotation: "rotate-[359deg]",
+      link: "https://tinkerhub.org/events/PVFE1S9ET7/blueprint-magic:-a-cyanotype-workshop",
     },
     {
       title: '"The Salad Studio" Creative Salad-Making',
@@ -130,6 +174,7 @@ export default function Events() {
       time: "11:00am - 12:00pm",
       category: "workshop",
       rotation: "rotate-[1deg]",
+      link: 'https://tinkerhub.org/events/JZXKCMI9LE/"the-salad-studio"---a-creative-salad-making-workshop',
     },
     {
       title: "Zine Making Workshop",
@@ -138,6 +183,7 @@ export default function Events() {
       time: "11:00am - 12:00pm",
       category: "workshop",
       rotation: "rotate-0",
+      link: "https://tinkerhub.org/events/KWI5URZPRA/hortus-malabaricus---zine-making-workshop",
     },
     {
       title: "Resin Art Workshop",
@@ -154,6 +200,7 @@ export default function Events() {
       time: "12:00pm - 01:00pm",
       category: "tech",
       rotation: "rotate-[359deg]",
+      link: "https://tinkerhub.org/events/HA6VRFJLUR/sonic-pi-workshop",
     },
     {
       title: "Intro to Music Production (Studio Sessions)",
@@ -162,6 +209,7 @@ export default function Events() {
       time: "03:00pm - 04:00pm",
       category: "music",
       rotation: "rotate-[2deg]",
+      link: "https://tinkerhub.org/events/KRVKP4OOBB/studio-session-by-onebit.---intro-to-music-production",
     },
     {
       title: "Crochet Workshop",
@@ -170,6 +218,7 @@ export default function Events() {
       time: "03:00pm - 04:00pm",
       category: "craft",
       rotation: "rotate-[358deg]",
+      link: "https://tinkerhub.org/events/NTM34PIG6S/crochet-workshop",
     },
     {
       title: 'Panel Discussion: "Why do we need third spaces?"',
@@ -186,6 +235,7 @@ export default function Events() {
       time: "04:00pm - 05:00pm",
       category: "science",
       rotation: "rotate-[359deg]",
+      link: "https://tinkerhub.org/events/JPQQS5CAJ1/make-a-telescope-workshop",
     },
     {
       title: "Murder Mystery: Blood on the Clock Tower",
@@ -259,6 +309,7 @@ export default function Events() {
       time: "07:00am - 08:00am",
       category: "fitness",
       rotation: "rotate-[2deg]",
+      link: "https://tinkerhub.org/events/510WEFR8AF/zumba-session",
     },
     {
       title: "Bavarasa Session",
@@ -267,6 +318,7 @@ export default function Events() {
       time: "10:00am - 11:00am",
       category: "keynote",
       rotation: "rotate-[359deg]",
+      link: "https://tinkerhub.org/events/NJ2OM3PF94/bhāvarasa---classical-story-telling",
     },
     {
       title: "Water Colour Roses + Brush Pen Calligraphy",
@@ -275,6 +327,7 @@ export default function Events() {
       time: "11:00am - 12:00pm",
       category: "art",
       rotation: "rotate-[1deg]",
+      link: "https://tinkerhub.org/events/Y1ZKBCGUSR/water-color-roses-and-brush-pen-calligraphy",
     },
     {
       title: "Theatre Workshop",
@@ -299,6 +352,7 @@ export default function Events() {
       time: "01:00pm - 02:00pm",
       category: "finance",
       rotation: "rotate-[2deg]",
+      link: "https://tinkerhub.org/events/KT9KFH343E/money-matters",
     },
     {
       title: "Grow Your Own Microgreens",
@@ -307,6 +361,7 @@ export default function Events() {
       time: "01:00pm - 02:00pm",
       category: "sustainability",
       rotation: "rotate-[359deg]",
+      link: "https://tinkerhub.org/events/D4OZ7SV6G6/grow-your-own-microgreens:-a-step-towards-healthy-living",
     },
     {
       title: "Fold & Create (Origami Workshop)",
@@ -315,6 +370,7 @@ export default function Events() {
       time: "02:00pm - 03:00pm",
       category: "craft",
       rotation: "rotate-[1deg]",
+      link: "https://tinkerhub.org/events/1WN6WDU2FN/fold-&-create---origami-workshop",
     },
     {
       title: "Doll Making Workshop",
@@ -323,6 +379,7 @@ export default function Events() {
       time: "02:00pm - 03:00pm",
       category: "craft",
       rotation: "rotate-0",
+      link: "https://tinkerhub.org/events/2N5D4M8HIE/doll-making-workshop",
     },
     {
       title: "Useless Project Showcase & Graduation",
@@ -344,7 +401,7 @@ export default function Events() {
   return (
     <div className="bg-[#f9d457] flex flex-col gap-5 items-center pb-24 sm:pb-[83px] pt-16 sm:pt-[122px] px-4 sm:px-0 relative w-full min-h-screen overflow-hidden">
       {/* Spark SVG - Bottom Left */}
-      <div className="absolute hidden lg:flex items-center justify-center -left-[500px] -bottom-[40%] z-0">
+      <div className="absolute hidden lg:flex items-center justify-center -left-[500px] -bottom-[25%] z-0">
         <div
           className="flex-none transition-transform duration-75 ease-out"
           style={{ transform: `rotate(${sparkRotation}deg)` }}
@@ -356,7 +413,7 @@ export default function Events() {
       </div>
 
       {/* Star SVG - Top Right */}
-      <div className="absolute hidden lg:flex items-center justify-center -right-[12%] -top-[20%] z-0">
+      <div className="absolute hidden lg:flex items-center justify-center -right-[12%] -top-[10%] z-0">
         <div
           className="flex-none transition-transform duration-75 ease-out"
           style={{ transform: `rotate(${starRotation}deg)` }}
